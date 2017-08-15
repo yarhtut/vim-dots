@@ -5,7 +5,7 @@
 " License:    The MIT License (MIT)
 
 " Original iA Writer colors, to use as a guide
-" White           #F1F1F1
+" White           #F3F5F6
 " OffWhiteIPad    #F5F2EC
 " OffWhiteDemo    #F9F8F4
 " Cursor          #20BBFC
@@ -17,6 +17,7 @@
 " Blue            #B5D6FD
 " Green           #30C798
 " Blue2           #1DAEE4
+" Blue            #2795EE     "jsfiddle
 " gray            #999999
 " Red             #E32791
 " UnfocusedText   #B8B8B8
@@ -28,6 +29,12 @@
 " NearBlack       #181818
 " SyntaxButton    #363738
 " SearchHighlight #F3E430  yellow
+
+"jsfiddle
+" Blue            #2795EE 
+" RED             #ED5C65
+" GREEN           #D9E9E6    
+" Purple          #A159D2
 
 hi clear
 
@@ -64,7 +71,7 @@ endif
 
 " Colors
 let s:black           = { "gui": "#212121", "cterm": "0"   }
-let s:medium_gray     = { "gui": "#767676", "cterm": "243" }
+let s:medium_gray     = { "gui": "#989898", "cterm": "250" }
 let s:white           = { "gui": "#F1F1F1", "cterm": "15"  }
 let s:actual_white    = { "gui": "#FFFFFF", "cterm": "231" }
 let s:light_black     = { "gui": "#424242", "cterm": "8"   }
@@ -74,7 +81,7 @@ if g:pencil_higher_contrast_ui == 0
   " darker shadow and whiter grays
   let s:subtle_black  = { "gui": "#262626", "cterm": "235" }
   let s:light_gray    = { "gui": "#D9D9D9", "cterm": "253" }
-  let s:lighter_gray  = { "gui": "#E5E6E6", "cterm": "254" }
+  let s:lighter_gray  = { "gui": "#e5e5e6", "cterm": "254" }
 else
   " lighter shadows and darker grays
   let s:subtle_black  = { "gui": "#303030", "cterm": "236" }
@@ -89,7 +96,7 @@ let s:orange          = { "gui": "#D75F5F", "cterm": "167" }
 
 let s:darker_blue     = { "gui": "#005F87", "cterm": "18"  }
 let s:dark_blue       = { "gui": "#008EC4", "cterm": "4"   }
-let s:blue            = { "gui": "#20BBFC", "cterm": "12"  }
+let s:blue            = { "gui": "#20BBFC", "cterm": "19"  }
 let s:light_blue      = { "gui": "#b6d6fd", "cterm": "153" }
 let s:dark_cyan       = { "gui": "#20A5BA", "cterm": "6"   }
 let s:light_cyan      = { "gui": "#4FB8CC", "cterm": "14"  }
@@ -97,14 +104,14 @@ let s:light_cyan      = { "gui": "#4FB8CC", "cterm": "14"  }
 let s:dark_green      = { "gui": "#10A778", "cterm": "2"   }
 let s:light_green     = { "gui": "#5FD7A7", "cterm": "10"  }
 
-let s:dark_purple     = { "gui": "#523C79", "cterm": "5"   }
+let s:dark_purple     = { "gui": "#523C79", "cterm": "128"   }
 let s:light_purple    = { "gui": "#6855DE", "cterm": "13"  }
 
 let s:yellow          = { "gui": "#F3E430", "cterm": "11"  }
 let s:dark_yellow     = { "gui": "#A89C14", "cterm": "3"   }
 
-if &background == "dark"
-  let s:bg              = s:black
+if &background == "black"
+   let s:bg              = s:black
   let s:bg_subtle       = s:light_black
   let s:bg_very_subtle  = s:subtle_black
   let s:norm            = s:lighter_gray
@@ -121,10 +128,12 @@ else
   let s:norm            = s:light_black
   let s:norm_subtle     = s:lighter_black
   let s:purple          = s:dark_purple
-  let s:cyan            = s:dark_cyan
-  let s:green           = s:dark_green
+  let s:cyan            = s:dark_green
+  let s:green           = s:dark_cyan
   let s:red             = s:dark_red
   let s:visual          = s:light_blue
+ 
+
 endif
 
 if g:pencil_neutral_headings == 1
@@ -170,7 +179,7 @@ endfunction
 
 call s:h("Normal",        {"bg": s:bg, "fg": s:norm})
 call s:h("Cursor",        {"bg": s:blue, "fg": s:norm })
-call s:h("Comment",       {"fg": s:medium_gray, "gui": "italic", "cterm": "italic"})
+call s:h("Comment",       {"fg": s:light_gray, "gui": "italic", "cterm": "italic"})
 
 call s:h("Constant",      {"fg": s:cyan})
 hi! link String           Constant
@@ -291,7 +300,7 @@ call s:h("htmlLink",      {"fg": s:blue  , "gui": "underline"  , "cterm": "under
 call s:h("htmlItalic",    {                "gui": "italic"     , "cterm": "italic"   })
 call s:h("htmlBold",      {                "gui": "bold"       , "cterm": "bold"     })
 call s:h("htmlBoldItalic",{                "gui": "bold,italic", "cterm": "bold"     })
-" hi htmlString     guifg=#87875f guibg=NONE gui=NONE        ctermfg=101 ctermbg=NONE cterm=NONE
+" hi htmlString     guifg=#87875f guibg=NONE gui=NONE        ctermfg=1 ctermbg=NONE cterm=NONE
 
 " tpope/vim-markdown
 call s:h("markdownBlockquote",          {"fg": s:norm})
@@ -386,3 +395,68 @@ else
   hi link GitGutterChange             LineNr
   hi link GitGutterChangeDelete       LineNr
 endif
+
+" " JavaScript
+highlight javaScriptFunction      ctermfg=9
+highlight javaScriptRailsFunction ctermfg=9 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
+highlight javaScriptBraces        ctermfg=2 ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
+highlight javaScriptSource        ctermfg=9
+highlight javaScriptIdentifier    ctermfg=39
+highlight javaScriptOperator      ctermfg=9 
+highlight javaScriptBoolean       ctermfg=9 
+highlight javaScriptNull          ctermfg=9
+highlight javaScriptMessage       ctermfg=9
+highlight javaScriptGlobal        ctermfg=9
+highlight javaScriptDeprecated    ctermfg=9
+highlight javaScriptConditional   ctermfg=9
+highlight javaScriptRepeat        ctermfg=9
+highlight javaScriptBranch        ctermfg=9
+highlight javaScriptLabel         ctermfg=9
+highlight javaScriptPrototype     ctermfg=29
+highlight javaScriptStatement     ctermfg=9
+highlight javaScriptGlobalObjects ctermfg=9
+highlight javaScriptExceptions    ctermfg=1
+highlight javaScriptReserved      ctermfg=99
+highlight javaScriptSpecial       ctermfg=6
+highlight javaScriptDocTags       ctermfg=1
+highlight javaScriptDOMProperties          ctermfg=3
+highlight javaScriptDOMMethods             ctermfg=3
+highlight javaScriptDOMObjects             ctermfg=3
+highlight javaScriptBrowserObjects         ctermfg=3
+highlight javaScriptEventListenerKeywords  ctermfg=3
+
+
+"Ruby
+"highlight rubyClass                    ctermfg=    
+highlight rubyFunction                 ctermfg=99
+"highlight rubyInterpolationDelimiter   ctermfg=  
+highlight rubySymbol                   ctermfg=99  
+highlight rubyConstant                 ctermfg=39
+highlight rubyStringDelimiter          ctermfg=9  
+"highlight rubyBlockParameter           ctermfg=    
+"highlight rubyInstanceVariable         ctermfg=  
+"highlight rubyInclude                  ctermfg=     
+"highlight rubyGlobalVariable           ctermfg=
+"highlight rubyRegexp                   ctermfg=     
+"highlight rubyRegexpDelimiter          ctermfg=     
+"highlight rubyEscape                   ctermfg=     
+highlight rubyControl                  ctermfg=9   
+highlight rubyClassVariable            ctermfg=9
+highlight rubyOperator                 ctermfg=9     
+"highlight rubyException                ctermfg=     
+"highlight rubyPseudoVariable           ctermfg=
+"highlight rubyRailsUserClass           ctermfg=
+"highlight rubyRailsARAssociationMethod ctermfg=
+highlight rubyRailsARMethod            ctermfg=6
+highlight rubyRailsRenderMethod        ctermfg=6
+highlight rubyRailsMethod              ctermfg=6
+
+" CSS
+highlight cssURL           ctermfg=214 
+highlight cssFunctionName  ctermfg=81   
+highlight cssColor         ctermfg=177  
+highlight cssPseudoClassId ctermfg=71   
+highlight cssClassName     ctermfg=71   
+highlight cssValueLength   ctermfg=177  
+highlight cssCommonAttr    ctermfg=81   
+highlight cssBraces        ctermfg=NONE
