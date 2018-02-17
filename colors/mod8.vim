@@ -16,7 +16,8 @@ set background=dark
 let s:gui00 = "2b303b"
 let s:gui01 = "343d46"
 let s:gui02 = "4f5b66"
-let s:gui03 = "65737e"
+"let s:gui03 = "65737e"
+let s:gui03 = "222222"
 let s:gui04 = "a7adba"
 let s:gui05 = "c0c5ce"
 let s:gui06 = "dfe1e8"
@@ -33,7 +34,8 @@ let s:gui0F = "ab7967"
 " Terminal color definitions
 " This is where we change certain definitions to free up colors
 let s:cterm00 = "00"        " unused
-let s:cterm03 = "07"
+let s:cterm03 = "08"
+"let s:cterm03 = "07"
 let s:cterm05 = "07"        " unused
 let s:cterm07 = "15"        " unused
 let s:cterm08 = "01"
@@ -48,6 +50,8 @@ let s:cterm04 = "15"
 let s:cterm06 = "13"        " unused
 let s:cterm09 = "09"
 let s:cterm0F = "14"
+let s:cterm0G = "12"
+let s:cterm0G = "10"
 
 " Highlighting function
 fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)
@@ -179,10 +183,38 @@ call <sid>hi("htmlEndTag",  s:gui05, "", "", "", "")
 call <sid>hi("htmlTag",     s:gui05, "", "", "", "")
 
 " JavaScript highlighting
-call <sid>hi("javaScript",        s:gui05, "", "", "", "")
-call <sid>hi("javaScriptBraces",  s:gui05, "", "", "", "")
-call <sid>hi("javaScriptNumber",  s:gui09, "", s:cterm09, "", "")
+call <sid>hi("javaScriptReserved",              s:gui09, "", s:cterm06, "", "") "export
+call <sid>hi("javaScriptIdentifier",            s:gui09, "", s:cterm0F, "", "") " let const
+call <sid>hi("javaScript",                      s:gui05, "", s:cterm09, "", "")
+call <sid>hi("javaScriptNumber",                s:gui09, "", s:cterm09, "", "")
+call <sid>hi("javaScriptConditional",           s:gui09, "", s:cterm09, "", "")
+call <sid>hi("javaScriptRepeat",                s:gui09, "", s:cterm09, "", "") " while
+call <sid>hi("javaScriptStatement",             s:gui09, "", s:cterm0B, "", "") " return
+call <sid>hi("javaScriptBraces",                s:gui09, "", s:cterm0G, "", "")
+call <sid>hi("javaScriptGlobalObjects",         s:gui09, "", s:cterm09, "", "") " Math
+call <sid>hi("javaScriptFunction",              s:gui09, "", s:cterm09, "", "")
+call <sid>hi("javaScriptRailsFunction",         s:gui09, "", s:cterm09, "", "")
+call <sid>hi("javaScriptSource",                s:gui09, "", s:cterm09, "", "")
+call <sid>hi("javaScriptBrowserObjects",        s:gui09, "", s:cterm08, "", "") "Window
+call <sid>hi("javaScriptDocTags",               s:gui09, "", s:cterm03, "", "") "@param @return
+call <sid>hi("javaScriptBranch",                s:gui09, "", s:cterm08, "", "")
+call <sid>hi("javaScriptLabel",                 s:gui09, "", s:cterm08, "", "") " case break
 
+
+call <sid>hi("javaScriptOperator",              s:gui09, "", s:cterm09, "", "")
+call <sid>hi("javaScriptBoolean",               s:gui09, "", s:cterm09, "", "")
+call <sid>hi("javaScriptNull",                  s:gui09, "", s:cterm09, "", "")
+call <sid>hi("javaScriptMessage",               s:gui09, "", s:cterm09, "", "")
+call <sid>hi("javaScriptGlobal",                s:gui09, "", s:cterm09, "", "")
+call <sid>hi("javaScriptDeprecated",            s:gui09, "", s:cterm09, "", "")
+
+call <sid>hi("javaScriptPrototype",             s:gui09, "", s:cterm03, "", "")
+call <sid>hi("javaScriptExceptions",            s:gui09, "", s:cterm03, "", "")
+call <sid>hi("javaScriptSpecial",               s:gui09, "", s:cterm03, "", "")
+call <sid>hi("javaScriptDOMProperties",         s:gui09, "", s:cterm03, "", "")
+call <sid>hi("javaScriptDOMMethods",            s:gui09, "", s:cterm03, "", "")
+call <sid>hi("javaScriptDOMObjects",            s:gui09, "", s:cterm03, "", "")
+call <sid>hi("javaScriptEventListenerKeywords", s:gui09, "", s:cterm03, "", "")
 " Markdown highlighting
 call <sid>hi("markdownCode",              s:gui0B, "", s:cterm0B, "", "")
 call <sid>hi("markdownError",             s:gui05, s:gui00, "", "", "")

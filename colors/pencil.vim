@@ -3,9 +3,10 @@
 " Version:    0.6
 " Maintainer: github.com/reedes github.com/mattly
 " License:    The MIT License (MIT)
+" https://jonasjacek.github.io/colors/
 
 " Original iA Writer colors, to use as a guide
-" White           #F3F5F6
+" White           #F2F5F6
 " OffWhiteIPad    #F5F2EC
 " OffWhiteDemo    #F9F8F4
 " Cursor          #20BBFC
@@ -72,7 +73,7 @@ endif
 " Colors
 let s:black           = { "gui": "#212121", "cterm": "0"   }
 let s:medium_gray     = { "gui": "#989898", "cterm": "250" }
-let s:white           = { "gui": "#F1F1F1", "cterm": "15"  }
+let s:white           = { "gui": "#F2F5F6", "cterm": "254"  }
 let s:actual_white    = { "gui": "#FFFFFF", "cterm": "231" }
 let s:light_black     = { "gui": "#424242", "cterm": "8"   }
 let s:lighter_black   = { "gui": "#545454", "cterm": "240" }
@@ -80,7 +81,7 @@ let s:lighter_black   = { "gui": "#545454", "cterm": "240" }
 if g:pencil_higher_contrast_ui == 0
   " darker shadow and whiter grays
   let s:subtle_black  = { "gui": "#262626", "cterm": "235" }
-  let s:light_gray    = { "gui": "#D9D9D9", "cterm": "253" }
+  let s:light_gray    = { "gui": "#D9D9D9", "cterm": "249" }
   let s:lighter_gray  = { "gui": "#e5e5e6", "cterm": "254" }
 else
   " lighter shadows and darker grays
@@ -110,31 +111,29 @@ let s:light_purple    = { "gui": "#6855DE", "cterm": "13"  }
 let s:yellow          = { "gui": "#F3E430", "cterm": "11"  }
 let s:dark_yellow     = { "gui": "#A89C14", "cterm": "3"   }
 
-if &background == "black"
-   let s:bg              = s:black
-  let s:bg_subtle       = s:light_black
-  let s:bg_very_subtle  = s:subtle_black
-  let s:norm            = s:lighter_gray
-  let s:norm_subtle     = s:light_gray
-  let s:purple          = s:light_purple
-  let s:cyan            = s:light_cyan
-  let s:green           = s:light_green
-  let s:red             = s:light_red
-  let s:visual          = s:lighter_black
-else
-  let s:bg              = s:white
+"if &background == "white"
+"  let s:bg              = s:black
+"  let s:bg_subtle       = s:light_black
+"  let s:bg_very_subtle  = s:subtle_black
+"  let s:norm            = s:lighter_gray
+"  let s:norm_subtle     = s:light_gray
+"  let s:purple          = s:light_purple
+"  let s:cyan            = s:light_cyan
+"  let s:green           = s:light_green
+"  let s:red             = s:light_red
+"else
+  let s:bg              = s:black
   let s:bg_subtle       = s:light_gray
   let s:bg_very_subtle  = s:lighter_gray
-  let s:norm            = s:light_black
+  let s:norm            = s:light_gray
+  "let s:norm            = s:light_black
   let s:norm_subtle     = s:lighter_black
   let s:purple          = s:dark_purple
   let s:cyan            = s:dark_green
   let s:green           = s:dark_cyan
   let s:red             = s:dark_red
   let s:visual          = s:light_blue
- 
-
-endif
+"endif
 
 if g:pencil_neutral_headings == 1
   let s:head_a         = s:norm
@@ -179,7 +178,7 @@ endfunction
 
 call s:h("Normal",        {"bg": s:bg, "fg": s:norm})
 call s:h("Cursor",        {"bg": s:blue, "fg": s:norm })
-call s:h("Comment",       {"fg": s:light_gray, "gui": "italic", "cterm": "italic"})
+call s:h("Comment",       {"fg": s:light_black, "gui": "italic", "cterm": "italic"})
 
 call s:h("Constant",      {"fg": s:cyan})
 hi! link String           Constant
@@ -203,7 +202,7 @@ call s:h("PreProc",       {"fg": s:red})
 hi! link Include          PreProc
 hi! link Define           PreProc
 hi! link Macro            PreProc
-hi! link PreCondit        PreProc
+
 
 call s:h("Type",          {"fg": s:purple})
 hi! link StorageClass     Type
@@ -367,6 +366,63 @@ call s:h("mmdTableHeader",              {"fg": s:norm})
 call s:h("mmdTableCaptionDelimiter",    {"fg": s:norm})
 call s:h("mmdTableCaption",             {"fg": s:norm})
 
+
+" JavaScript
+call s:h("javaScriptBraces",            { "fg": s:white })
+call s:h("javaScriptFunction",          { "fg": s:dark_purple })
+call s:h("javaScriptIdentifier",        { "fg": s:purple })
+call s:h("javaScriptNull",              { "fg": s:yellow })
+call s:h("javaScriptNumber",            { "fg": s:yellow })
+call s:h("javaScriptRequire",           { "fg": s:cyan })
+call s:h("javaScriptReserved",          { "fg": s:purple })
+" https://github.com/pangloss/vim-javascript
+call s:h("jsArrowFunction",             { "fg": s:purple })
+call s:h("jsClassKeywords",             { "fg": s:purple })
+call s:h("jsDocParam",                  { "fg": s:blue })
+call s:h("jsDocTags",                   { "fg": s:purple })
+call s:h("jsFuncCall",                  { "fg": s:blue })
+call s:h("jsFunction",                  { "fg": s:purple })
+call s:h("jsGlobalObjects",             { "fg": s:yellow })
+call s:h("jsModuleWords",               { "fg": s:purple })
+call s:h("jsModules",                   { "fg": s:purple })
+call s:h("jsNull",                      { "fg": s:yellow })
+call s:h("jsOperator",                  { "fg": s:purple })
+call s:h("jsStorageClass",              { "fg": s:purple })
+call s:h("jsTemplateBraces",            { "fg": s:dark_red })
+call s:h("jsTemplateVar",               { "fg": s:green })
+call s:h("jsThis",                      { "fg": s:red })
+call s:h("jsUndefined",                 { "fg": s:yellow })
+" https://github.com/othree/yajs.vim
+call s:h("javascriptArrowFunc",         { "fg": s:purple })
+call s:h("javascriptClassExtends",      { "fg": s:purple })
+call s:h("javascriptClassKeyword",      { "fg": s:purple })
+call s:h("javascriptDocNotation",       { "fg": s:purple })
+call s:h("javascriptDocParamName",      { "fg": s:blue })
+call s:h("javascriptDocTags",           { "fg": s:purple })
+call s:h("javascriptEndColons",         { "fg": s:white })
+call s:h("javascriptExport",            { "fg": s:purple })
+call s:h("javascriptFuncArg",           { "fg": s:white })
+call s:h("javascriptFuncKeyword",       { "fg": s:purple })
+call s:h("javascriptIdentifier",        { "fg": s:red })
+call s:h("javascriptImport",            { "fg": s:purple })
+call s:h("javascriptObjectLabel",       { "fg": s:white })
+call s:h("javascriptOpSymbol",          { "fg": s:cyan })
+call s:h("javascriptOpSymbols",         { "fg": s:cyan })
+call s:h("javascriptPropertyName",      { "fg": s:green })
+call s:h("javascriptTemplateSB",        { "fg": s:red })
+call s:h("javascriptVariable",          { "fg": s:purple })
+
+" JSON
+call s:h("jsonCommentError",            { "fg": s:white })
+call s:h("jsonKeyword",                 { "fg": s:red })
+call s:h("jsonQuote",                   { "fg": s:white })
+call s:h("jsonMissingCommaError",       { "fg": s:red, "gui": "reverse" })
+call s:h("jsonNoQuotesError",           { "fg": s:red, "gui": "reverse" })
+call s:h("jsonNumError",                { "fg": s:red, "gui": "reverse" })
+call s:h("jsonString",                  { "fg": s:green })
+call s:h("jsonStringSQError",           { "fg": s:red, "gui": "reverse" })
+call s:h("jsonSemicolonError",          { "fg": s:red, "gui": "reverse" })
+
 " Textile content
 " https://github.com/timcharper/textile.vim/blob/master/syntax/textile.vim
 "call s:h("txtBold",                {"fg": s:norm  , "gui": "bold"       , "cterm": "bold"  })
@@ -397,33 +453,33 @@ else
 endif
 
 " " JavaScript
-highlight javaScriptFunction      ctermfg=9
-highlight javaScriptRailsFunction ctermfg=9 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
-highlight javaScriptBraces        ctermfg=2 ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-highlight javaScriptSource        ctermfg=9
-highlight javaScriptIdentifier    ctermfg=39
-highlight javaScriptOperator      ctermfg=9 
-highlight javaScriptBoolean       ctermfg=9 
-highlight javaScriptNull          ctermfg=9
-highlight javaScriptMessage       ctermfg=9
-highlight javaScriptGlobal        ctermfg=9
-highlight javaScriptDeprecated    ctermfg=9
-highlight javaScriptConditional   ctermfg=9
-highlight javaScriptRepeat        ctermfg=9
-highlight javaScriptBranch        ctermfg=9
-highlight javaScriptLabel         ctermfg=9
-highlight javaScriptPrototype     ctermfg=29
-highlight javaScriptStatement     ctermfg=9
-highlight javaScriptGlobalObjects ctermfg=9
-highlight javaScriptExceptions    ctermfg=1
-highlight javaScriptReserved      ctermfg=99
-highlight javaScriptSpecial       ctermfg=6
-highlight javaScriptDocTags       ctermfg=1
-highlight javaScriptDOMProperties          ctermfg=3
-highlight javaScriptDOMMethods             ctermfg=3
-highlight javaScriptDOMObjects             ctermfg=3
-highlight javaScriptBrowserObjects         ctermfg=3
-highlight javaScriptEventListenerKeywords  ctermfg=3
+"highlight javaScriptFunction      ctermfg=9
+"highlight javaScriptRailsFunction ctermfg=9 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
+"highlight javaScriptBraces        ctermfg=2 ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
+"highlight javaScriptSource        ctermfg=9
+"highlight javaScriptIdentifier    ctermfg=39
+"highlight javaScriptOperator      ctermfg=9 
+"highlight javaScriptBoolean       ctermfg=9 
+"highlight javaScriptNull          ctermfg=9
+"highlight javaScriptMessage       ctermfg=9
+"highlight javaScriptGlobal        ctermfg=9
+"highlight javaScriptDeprecated    ctermfg=9
+"highlight javaScriptConditional   ctermfg=9
+"highlight javaScriptRepeat        ctermfg=9
+"highlight javaScriptBranch        ctermfg=9
+"highlight javaScriptLabel         ctermfg=9
+"highlight javaScriptPrototype     ctermfg=29
+"highlight javaScriptStatement     ctermfg=9
+"highlight javaScriptGlobalObjects ctermfg=9
+"highlight javaScriptExceptions    ctermfg=1
+"highlight javaScriptReserved      ctermfg=99
+"highlight javaScriptSpecial       ctermfg=6
+"highlight javaScriptDocTags       ctermfg=1
+"highlight javaScriptDOMProperties          ctermfg=3
+"highlight javaScriptDOMMethods             ctermfg=3
+"highlight javaScriptDOMObjects             ctermfg=3
+"highlight javaScriptBrowserObjects         ctermfg=3
+"highlight javaScriptEventListenerKeywords  ctermfg=3
 
 
 "Ruby
